@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FF4B72">
+  <meta name="description" content="GlowDeals - Discover the prettiest beauty & personal care deals in Egypt across Makeup, Skincare, Bodycare, Haircare, and Nailcare. Hourly updates & top daily discounts!">
+  
+  <title>GlowDeals 💖 Beauty & Care Deals in Egypt</title>
+
+  <!-- PWA Manifest & App Icons -->
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GlowDeals">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="stylesheet" href="./src/css/components.css">
+  <link rel="stylesheet" href="./src/css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="brand-logo" onclick="window.location.reload()">
+        <img src="./assets/icons/icon-192.png" alt="GlowDeals Logo" class="logo-icon-img">
+        <div class="logo-text-wrap">
+          <div class="brand-title">GlowDeals 💖</div>
+          <div class="brand-tagline">Egypt Beauty & Care Tracker</div>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Live Hourly Sync Status Pill -->
+        <button class="hourly-sync-badge" id="manualSyncBtn" title="Hourly sync active. Click to check live offers now!">
+          <span class="sync-dot"></span>
+          <span id="syncStatusText">Synced just now</span>
+          <span class="badge-long-text">↻</span>
+        </button>
+
+        <!-- Push Notifications & Daily Deal Bell -->
+        <button class="btn-icon" id="pushNotifBtn" title="Test Deal of the Day Push Notification" aria-label="Notifications">
+          🔔
+        </button>
+
+        <!-- View Tracked Stores Button -->
+        <button class="btn-icon" id="openStoresModalBtn" title="View Tracked Egyptian & Global Stores" aria-label="Tracked Stores">
+          🛍️
+        </button>
+
+        <!-- Add Custom Store Button -->
+        <button class="btn-primary" id="openAddWebsiteBtn">
+          <span>✨</span>
+          <span class="nav-btn-text">Add Store</span>
+        </button>
+
+        <!-- PWA Install Button (Hidden until installable) -->
+        <button class="btn-primary" id="installAppBtn" style="display: none; background: #381220;">
+          <span>📲</span>
+          <span class="nav-btn-text">Install App</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- Hero Introduction -->
+    <section class="hero-section">
+      <div class="hero-pill">
+        <span>🌸</span>
+        <span>Egypt's #1 Beauty Deals Aggregator</span>
+      </div>
+      <h1 class="hero-title font-serif">
+        The Prettiest Deals on <br>
+        <span class="highlight">Makeup & Self-Care</span>
+      </h1>
+      <p class="hero-subtitle">
+        Curating real-time discounts from top Egyptian local brands and premier global retailers. Updated hourly so you never miss a flash sale!
+      </p>
+
+      <!-- Live Quick Stats -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span>🏬</span>
+          <span><span class="stat-num" id="statStoresCount">12</span> Tracked Stores</span>
+        </div>
+        <div class="stat-item">
+          <span>🇪🇬</span>
+          <span id="statLocalCount">8 Egyptian Brands</span>
+        </div>
+        <div class="stat-item">
+          <span>🏷️</span>
+          <span><span class="stat-num" id="statDealsCount">10</span> Live Verified Deals</span>
+        </div>
+        <div class="stat-item">
+          <span>⏰</span>
+          <span>Hourly Automated Sync</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deal of the Day Spotlight Section -->
+    <section class="deal-of-day-section" aria-label="Deal of the Day">
+      <div id="dealOfDaySpotlight">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- Filter & Categories Wrapper -->
+    <section class="filter-wrapper" aria-label="Filters and Categories">
+      
+      <!-- Origin Switcher (All / Local Egyptian / Global) -->
+      <div class="origin-switch-container">
+        <div class="origin-switch">
+          <button class="origin-btn active" data-origin="all">All Offers 🌸</button>
+          <button class="origin-btn" data-origin="local">🇪🇬 Local Egyptian Brands</button>
+          <button class="origin-btn" data-origin="global">🌍 Global Retailers</button>
+        </div>
+      </div>
+
+      <!-- Beauty Categories Bar -->
+      <div class="category-bar">
+        <button class="cat-pill active" data-category="all">
+          <span>✨</span>
+          <span>All Categories</span>
+        </button>
+        <button class="cat-pill" data-category="makeup">
+          <span>💄</span>
+          <span>Makeup</span>
+        </button>
+        <button class="cat-pill" data-category="skincare">
+          <span>🧴</span>
+          <span>Skincare</span>
+        </button>
+        <button class="cat-pill" data-category="bodycare">
+          <span>🛁</span>
+          <span>Bodycare</span>
+        </button>
+        <button class="cat-pill" data-category="haircare">
+          <span>💇‍♀️</span>
+          <span>Haircare</span>
+        </button>
+        <button class="cat-pill" data-category="nailcare">
+          <span>💅</span>
+          <span>Nailcare</span>
+        </button>
+      </div>
+
+      <!-- Search & Sort Controls -->
+      <div class="toolbar-wrap">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="dealSearchInput" class="search-input" placeholder="Search product, brand (The Hair Addict, Braes, Eva...)" autocomplete="off">
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button class="btn-primary" id="testDealOfDayBtn" style="font-size: 0.8rem; padding: 8px 16px; background: linear-gradient(135deg, #FF7597, #FF4B72);">
+            🔔 Send Deal of the Day Push
+          </button>
+          <select id="dealSortSelect" class="sort-select" aria-label="Sort Deals">
+            <option value="discount">Highest Discount %</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="popular">Most Popular & Reviewed</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Deals Grid -->
+    <section class="deals-grid" id="dealsGrid">
+      <!-- Rendered dynamically by app.js -->
+    </section>
+
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-nav-bar" aria-label="Mobile Navigation">
+    <button class="mob-nav-item active" data-tab="home">
+      <span class="mob-nav-icon">🌸</span>
+      <span>Home</span>
+    </button>
+    <button class="mob-nav-item" data-tab="local">
+      <span class="mob-nav-icon">🇪🇬</span>
+      <span>Local Egypt</span>
+    </button>
+    <button class="mob-nav-item" data-tab="favorites">
+      <span class="mob-nav-icon">💖</span>
+      <span>Wishlist</span>
+    </button>
+    <button class="mob-nav-item" data-tab="stores">
+      <span class="mob-nav-icon">🏬</span>
+      <span>Stores</span>
+    </button>
+  </nav>
+
+  <!-- Modal: Add Custom Website to Track -->
+  <div class="modal-backdrop" id="addWebsiteModal" role="dialog" aria-modal="true" aria-labelledby="addWebsiteTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title font-serif" id="addWebsiteTitle">✨ Track a New Beauty Website</h3>
+        <button class="modal-close" id="closeAddWebsiteBtn" aria-label="Close modal">&times;</button>
+      </div>
+      <form id="addWebsiteForm">
+        <div class="modal-body">
+          <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.4;">
+            Add your favorite Egyptian or international beauty brand store to track offers automatically every hour!
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="siteName">Store / Brand Name</label>
+            <input type="text" id="siteName" name="siteName" class="form-input" placeholder="e.g. Jovality Egypt, Norshek, L'Oreal EG" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="siteUrl">Website URL</label>
+            <input type="url" id="siteUrl" name="siteUrl" class="form-input" placeholder="https://example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="siteOrigin">Product Origin Classification</label>
+            <select id="siteOrigin" name="siteOrigin" class="form-select">
+              <option value="local">🇪🇬 Egyptian Local Brand / Boutique</option>
+              <option value="global">🌍 Global Retailer / International Brand</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Beauty Categories</label>
+            <div class="category-checkboxes">
+              <label class="cat-check-label"><input type="checkbox" name="siteCategory" value="makeup"> <span>💄 Makeup</span></label>
+              <label class="cat-check-label"><input type="checkbox" name="siteCategory" value="skincare" checked> <span>🧴 Skincare</span></label>
+              <label class="cat-check-label"><input type="checkbox" name="siteCategory" value="bodycare"> <span>🛁 Bodycare</span></label>
+              <label class="cat-check-label"><input type="checkbox" name="siteCategory" value="haircare" checked> <span>💇‍♀️ Haircare</span></label>
+              <label class="cat-check-label"><input type="checkbox" name="siteCategory" value="nailcare"> <span>💅 Nailcare</span></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="siteDesc">Notes / Discount Code (Optional)</label>
+            <input type="text" id="siteDesc" name="siteDesc" class="form-input" placeholder="e.g. Look out for 1+1 offers or weekend codes">
+          </div>
+
+          <button type="submit" class="btn-primary" style="justify-content: center; width: 100%; padding: 12px; margin-top: 6px;">
+            💖 Add to Hourly Tracking
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Tracked Stores Directory -->
+  <div class="modal-backdrop" id="storesDirectoryModal" role="dialog" aria-modal="true" aria-labelledby="storesTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title font-serif" id="storesTitle">🏬 Tracked Beauty Stores & Boutiques</h3>
+        <button class="modal-close" id="closeStoresModalBtn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.84rem; color: var(--text-secondary);">
+          These Egyptian and global stores are tracked automatically every hour for live beauty discounts:
+        </p>
+        <div id="trackedStoresList" style="display: flex; flex-direction: column; gap: 10px; max-height: 50vh; overflow-y: auto;">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Core JavaScript (ES Module) -->
+  <script type="module" src="./src/js/app.js"></script>
+</body>
+</html>

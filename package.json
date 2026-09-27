@@ -1,0 +1,22 @@
+{
+  "name": "glowdeals-pwa",
+  "version": "1.0.0",
+  "description": "GlowDeals - Luxury Beauty & Personal Care Deals Tracker PWA for Egypt & Global Brands",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "pwa",
+    "beauty",
+    "makeup",
+    "skincare",
+    "egypt",
+    "deals",
+    "discounts"
+  ],
+  "author": "Rawan Sayed",
+  "license": "MIT"
+}

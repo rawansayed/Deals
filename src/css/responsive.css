@@ -1,0 +1,137 @@
+/* ==========================================================================
+   GlowDeals Responsive & Mobile PWA Navigation
+   ========================================================================== */
+
+/* Mobile Bottom Navigation Bar (App Experience) */
+.mobile-nav-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -4px 20px rgba(255, 75, 114, 0.1);
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mob-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.mob-nav-icon {
+  font-size: 1.25rem;
+}
+
+.mob-nav-item.active {
+  color: var(--primary-pink);
+}
+
+.mob-nav-item:hover {
+  color: var(--primary-dark-pink);
+}
+
+/* Tablet & Mobile Breakpoints */
+@media (max-width: 900px) {
+  .spotlight-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .spotlight-media {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 90px;
+  }
+
+  .mobile-nav-bar {
+    display: flex;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
+  .hourly-sync-badge span.badge-long-text {
+    display: none;
+  }
+
+  .nav-btn-text {
+    display: none;
+  }
+
+  .deals-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .hero-stats {
+    gap: 14px;
+  }
+
+  .stat-item {
+    font-size: 0.78rem;
+  }
+
+  .toolbar-wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input-wrap {
+    max-width: 100%;
+  }
+
+  .modal-dialog {
+    margin: 10px;
+    max-height: 85vh;
+  }
+
+  .glow-toast-container {
+    left: 16px;
+    right: 16px;
+    bottom: 80px;
+  }
+
+  .glow-toast-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .brand-title {
+    font-size: 1.35rem;
+  }
+
+  .origin-btn {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+  }
+
+  .deals-grid {
+    grid-template-columns: 1fr;
+  }
+}
