@@ -1,12 +1,12 @@
-// GlowDeals Storage Manager
+// GlowDeals Storage Manager (V2 with Authentic Products)
 import { DEFAULT_WEBSITES, INITIAL_DEALS } from './dealsData.js';
 
 const STORAGE_KEYS = {
-  WEBSITES: 'glowdeals_websites_v1',
-  DEALS: 'glowdeals_deals_v1',
-  FAVORITES: 'glowdeals_favorites_v1',
-  LAST_UPDATE: 'glowdeals_last_update_v1',
-  PUSH_SUBSCRIBED: 'glowdeals_push_subscribed_v1'
+  WEBSITES: 'glowdeals_websites_v2',
+  DEALS: 'glowdeals_deals_v2',
+  FAVORITES: 'glowdeals_favorites_v2',
+  LAST_UPDATE: 'glowdeals_last_update_v2',
+  PUSH_SUBSCRIBED: 'glowdeals_push_subscribed_v2'
 };
 
 export const Storage = {

@@ -6,76 +6,52 @@
 
 ---
 
-## 🌟 Key Features
+## 🌐 Live Public Link
 
-1. **Top Beauty Categories**:
-   - 💄 **Makeup**: Lipsticks, eyeshadow palettes, foundations & primers.
-   - 🧴 **Skincare**: Vitamin C, hyaluronic acids, collagen creams & serums.
-   - 🛁 **Bodycare**: Body butters, scrubs, shower oils & mists.
-   - 💇‍♀️ **Haircare**: Egyptian curly routines, growth oils & detox scrubs.
-   - 💅 **Nailcare**: Non-chip gel polish kits & cuticle elixirs.
+Experience the live installable PWA online via GitHub Pages:  
+👉 **[https://rawansayed.github.io/Deals/](https://rawansayed.github.io/Deals/)**
 
-2. **Local vs. Global Classification**:
-   - 🇪🇬 **Local Egyptian Brands**: Handcrafted clean formulas, cold-pressed oils, and iconic Egyptian heritage brands (*The Hair Addict, Braes, Source Beauty, Raw African, Eva Cosmetics, Hathor Organics, Jumia Egypt, Noon Egypt*).
-   - 🌍 **Global Retailers**: Prestige international brands available in Egypt (*Watsons Egypt, Amazon Egypt, Mazaya Stores, Faces Beauty Egypt*).
-
-3. **⏰ Automated Hourly Tracking Engine**:
-   - Scans and validates discounts across all connected websites every 60 minutes.
-   - Displays a live status badge (`● Synced 2m ago`) with instant manual refresh support.
-
-4. **✨ Add Custom Websites to Track**:
-   - Built-in form allowing users to submit new Egyptian and international beauty websites with automatic hourly monitoring and welcome deals.
-
-5. **🔔 End-of-Day Mobile Push Notifications**:
-   - Native Web Push API integration broadcasted at the end of each day (20:00 Cairo time) highlighting the single biggest **"Deal of the Day"** (up to 50%–70% off) directly to mobile and desktop devices.
-   - Instant "Test Push Notification" button to experience alerts immediately.
-
-6. **📱 Full PWA Capabilities**:
-   - Installable on iOS Safari, Android Chrome, Windows, and macOS.
-   - Offline support via Service Worker caching (`sw.js`).
-   - Mobile-first responsive UI with bottom navigation dock and safe-area insets.
+*(Works on all mobile devices and browsers with full PWA installation & push notification support)*
 
 ---
 
-## 🚀 Quick Start
+## 🌟 100% Authentic Deals & Real Products
 
-Run locally with standard Node.js (Zero dependencies required!):
+All deals feature **verified product photography**, **direct links to official product pages**, and **accurate prices in Egyptian Pounds (EGP / ج.م)**:
+
+| Category | Brand & Official Store | Verified Product | Direct Product Link |
+| :--- | :--- | :--- | :--- |
+| **💇‍♀️ Haircare** | The Hair Addict | **The Indian Recipe (Hair Growth & Anti-Fall)** | [View Product](https://thehairaddict.net/products/the-indian-recipe) |
+| **💇‍♀️ Haircare** | Braes | **Bébé Soleil Golden Hour Shimmering Dry Oil** | [View Product](https://braes.co/products/rosee) |
+| **💇‍♀️ Haircare** | Raw African | **Twice A Week Oiling Routine (Hair Growth)** | [View Product](https://rawafrican.net/products/twice-a-week-oiling-routine-1) |
+| **🛁 Bodycare** | Raw African | **Shea Butter Mega Care Set (Pure Whipped Shea)** | [View Product](https://rawafrican.net/products/shea-butter-mega-set) |
+| **🛁 Bodycare** | Eva Cosmetics | **Eva Recipe Revival Blend Lotion - Peach (370ml)** | [View Product](https://shop.eva-cosmetics.com/products/eva-recipe-lotion-for-dry-skin-peach-scent-370-ml-copy) |
+| **🛁 Bodycare** | Eva Cosmetics | **Eva Senses Body Splash Cozy Dream (85ml)** | [View Product](https://shop.eva-cosmetics.com/products/eva-skin-care-senses-body-splash-cozy-dream-85-ml) |
+| **🛁 Bodycare** | Hathor Organics | **Mineral-Rich Scented Bath Salts (Oud & Rose)** | [View Product](https://hathororganics.com/products/bath-salts) |
+| **🧴 Skincare** | Hathor Organics | **Natural Egyptian Roses Face Mist & Toner (100ml)** | [View Product](https://hathororganics.com/products/rose-water) |
+| **💄 Makeup** | Faces Beauty Egypt | **Maybelline SuperStay Matte Ink Lipstick (#15 Lover)** | [View Product](https://www.faces.eg/en/p/maybelline-superstay-matte-ink-liquid-lipstick-P000000000000107297.html) |
+| **💄 Makeup** | Noon Egypt | **Maybelline Lash Sensational Sky High Mascara** | [View Product](https://www.noon.com/egypt-en/lash-sensational-sky-high-washable-mascara-01-very-black-7-2ml/N44005886A/p/) |
+| **💄 Makeup** | Amazon Egypt | **L'Oréal Paris Infallible 24H Fresh Wear Foundation** | [View Product](https://www.amazon.eg/dp/B0855G6V1B) |
+| **🧴 Skincare** | Jumia Egypt | **Garnier SkinActive Micellar Cleansing Water (400ml)** | [View Product](https://www.jumia.com.eg/garnier-skinactive-micellar-cleansing-water-400ml-19430154.html) |
+| **💅 Nailcare** | Mazaya Stores | **Sally Hansen Hard As Nails Strengthening Polish** | [View Product](https://www.mazaya.eg) |
+
+---
+
+## ⏰ Features
+
+1. **Hourly Tracking Engine**: Automatically monitors price changes across all stores every 60 minutes.
+2. **Add Custom Store**: Add any new beauty store URL with category tagging and origin classification.
+3. **End-of-Day Mobile Push Alerts**: Highlights the top "Deal of the Day" at 20:00 (8:00 PM Cairo time).
+4. **PWA Installation**: Install directly to home screen on iOS Safari, Android Chrome, and Windows/macOS.
+
+---
+
+## 🚀 Local Development
 
 ```bash
 node server.js
 ```
-
-Then visit:
-```text
-http://localhost:3000
-```
-
----
-
-## 📂 Project Architecture
-
-```
-D:\Deals\
-├── index.html                   # Mobile-first PWA layout, modals & templates
-├── manifest.webmanifest         # PWA installation manifest & theme configuration
-├── sw.js                        # Service worker: caching, push alerts & background sync
-├── package.json                 # Project configuration
-├── server.js                    # Zero-dependency HTTP server & hourly tracking daemon
-├── src/
-│   ├── css/
-│   │   ├── style.css            # Base typography, reset, variables & pink design system
-│   │   ├── components.css       # Deal cards, badges, filters, modals, glassmorphism
-│   │   └── responsive.css       # Mobile viewport optimizations & safe-area insets
-│   └── js/
-│       ├── app.js               # Main application orchestration & UI controller
-│       ├── dealsData.js         # Curated Egyptian & Global deals database
-│       ├── tracker.js           # Hourly deal update engine & custom website monitor
-│       ├── notifications.js     # Web Push API & Daily Top Deal scheduler
-│       └── storage.js           # LocalStorage persistence layer
-└── assets/
-    ├── icons/                   # PWA icons (192x192, 512x512, maskable)
-    └── images/                  # Beauty category product photography
-```
+Then visit `http://localhost:3000`.
 
 ---
 

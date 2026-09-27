@@ -1,4 +1,4 @@
-const CACHE_NAME = 'glowdeals-v1';
+const CACHE_NAME = 'glowdeals-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -12,14 +12,27 @@ const ASSETS_TO_CACHE = [
   './src/js/tracker.js',
   './src/js/notifications.js',
   './assets/icons/icon-192.png',
-  './assets/icons/icon-512.png'
+  './assets/icons/icon-512.png',
+  './assets/images/products/the-indian-recipe.jpg',
+  './assets/images/products/braes-shimmer-oil.png',
+  './assets/images/products/raw-african-routine.jpg',
+  './assets/images/products/raw-african-shea.png',
+  './assets/images/products/eva-peach-lotion.png',
+  './assets/images/products/eva-cozy-dream.jpg',
+  './assets/images/products/hathor-bath-salts.jpg',
+  './assets/images/products/hathor-rose-water.jpg',
+  './assets/images/products/maybelline-matte-ink.jpg',
+  './assets/images/products/maybelline-sky-high.jpg',
+  './assets/images/products/loreal-infallible.jpg',
+  './assets/images/products/garnier-micellar.jpg',
+  './assets/images/products/sally-hansen-nails.jpg'
 ];
 
 // Install Event - Pre-cache core assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Caching app shell & static assets');
+      console.log('[Service Worker] Caching authentic assets & app shell');
       return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
         console.warn('[Service Worker] Some assets skipped during pre-cache:', err);
       });
@@ -71,8 +84,8 @@ self.addEventListener('fetch', (event) => {
 // Push Notification Event (Deal of the Day & Hourly Flash Alerts)
 self.addEventListener('push', (event) => {
   let data = {
-    title: 'GlowDeals 💖 Deal of the Day!',
-    body: 'A special beauty discount is waiting for you in Egypt! Tap to explore.',
+    title: 'GlowDeals 💖 Deal of the Day in Egypt!',
+    body: 'A special beauty discount is waiting for you! Tap to explore.',
     icon: './assets/icons/icon-192.png',
     badge: './assets/icons/icon-192.png',
     url: './index.html?view=deal-of-the-day',
@@ -91,7 +104,7 @@ self.addEventListener('push', (event) => {
     body: data.body,
     icon: data.icon || './assets/icons/icon-192.png',
     badge: data.badge || './assets/icons/icon-192.png',
-    vibrate: [100, 50, 100],
+    vibrate: [200, 100, 200, 100, 300],
     data: {
       url: data.url || './index.html'
     },
